@@ -1,0 +1,299 @@
+<html>
+    <head>
+        <title>Electrokraft</title>
+
+        <!--BOOTSTRAP CDN-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+        <body onload="loadProducts()">
+            
+            <!--AD BANNER START-->
+           <div class="row" >
+             <div class="col-lg-6 col-sm-12">
+              <img src="https://lcpshop.net/wp-content/uploads/2019/03/201937-67ojro.jpg"alt="" style="width: 300px;">
+            </div>
+
+
+             
+            
+             <div class="col-lg-6 col-sm-12">
+                <h3 style="text-align: center;margin-top: 20px;">Apple's new<span style="font-size: 50px;"></span> watch series 7</span></h3>
+                <p style="text-align: center;">Watch series 7 comes with ECG,<span style="color:red;"></span>Heart Rate Monitor and water Resistant</p>
+                <p style="text-align:center;"><button class="btn btn-primary" onclick="adClick()">BUY NOW</button>
+
+                &nbsp;&nbsp;
+
+                <a href="">viewdetails</a>
+            </p>
+             
+            </div>   
+            </div>
+           
+
+
+
+
+             <!--AD BANNER END-->
+             <hr>
+            <!--PRODUCT CATALOG START-->
+            <div class="container">
+                <h2 class="text-center">Products catelogue</h2>
+                 <br>
+                 <!--Grid with card start-->
+                 <div class="row" id="productData">
+
+
+                 </div>
+                 <!--Grid with card end-->
+
+            </div>
+            <!--product catelogue end-->
+         
+            <br>
+
+            
+    <!--contact start-->
+    <div class="container">
+        <h2 class="text-center">Contact us</h2>
+
+        <br>
+
+
+        <div class="row" >
+            
+            <div class="col-lg-4 col-sm-12">
+                <h6 style="margin-top: 30px;"></h6>
+            <h6>Email:<b>saleselectrokraft.com</b></h6>
+            <h6>Mobile:<b>+91 445 566 7744</b></h6>
+            <p>Address:#123, 1st cross, 1st Main<br>
+            Adyar, Mangalore - 574143</p>
+        </div>
+            <div class="col-lg-8 col-sm-12">
+                <h2>For Bulk Orders Write Us</h2>
+                <br>
+                <p>
+
+                    <label>Name</label>
+                    <input type="text" id="name" class="form-control">
+                    <span id="errname" style="color:red;"></span>
+                </p>
+                <p>
+                    <label>Email</label>
+                    <input type="text" id="email" class="form-control">
+                    <span id="errmail" style="color:red;"></span>
+                </p>
+                <p>
+                    <label>Mobile</label>
+                    <input type="text"  maxlength="10" id="mobile" class="form-control">
+                    <span id="errmobile" style="color: red;"></span>
+                </p>
+                <p>
+                    <label>Comments</label>
+                    <textarea class="form-control" id="comments"></textarea>
+                    <span id="errcom" style="color:red;"></span>
+                </p>
+                <button onclick="validateForm()" class="btn btn-primary" style="width: 100%"> SUBMIT</button>
+                <span id="successMsg" style="color:olivedrab;"></span>
+            </div>
+
+<!--semicolon not needed vF(camel case) VF(pascalcase) (_snakecase)-->
+
+        </div>
+            </div>
+            <script>
+                function validateForm()
+                {
+                    // fetch the value from name Textbox(innerhtml to assign the value)
+                    var name = document.getElementById('name').value
+                    
+                    //check if name is empty or not
+                    if(name == '')
+                    {
+                       document.getElementById('errname').innerHTML = "PLEASE ENTER YOUR NAME"
+                       return false
+                    }
+                    else
+                    {
+                        document.getElementById('errname').innerHTML = ''
+                    }
+                    //validate name(regular expression)(admin space p/w is a valid and strong p/w)
+                    
+                    var regxName = /^[A-Za-z ]+$/ //widespace
+                    var validName = name.match(regxName)
+
+                    if(!validName)
+                    {
+                        document.getElementById('errname').innerHTML = "PLEASE ENTER VALID NAME"
+                        return false
+                    }
+                    else
+                    {
+                        document.getElementById('errname').innerHTML = ''
+                    }
+                    //fetch value from email
+                    var email = document.getElementById('email').value
+
+                    //check if email is empty or not
+
+                    if(email == '')
+                    {
+                        document.getElementById('errmail').innerHTML = "PLEASE ENTER YOUR EMAIL"
+                        return false
+                    }
+                    else
+                    {
+                        document.getElementById('errmail').innerHTML = ''
+                    }
+                    //validate email(from google how can i validate email address in js form stackoverflow)
+                    var regxemail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+                    var validemail = email.match(regxemail)
+
+                    if(!validemail)
+                    {
+                        document.getElementById('errmail').innerHTML = 'please enter vaild mail'
+
+                    }
+                    else
+                    {
+                        document.getElementById('errmail').innerHTML = ''
+                    }
+                    //fetch the value from moblie textbox
+                    var mobile = document.getElementById('mobile').value
+
+                    //check if mobile is empty or not
+
+                    if(mobile == '')
+                    {
+                        document.getElementById('errmobile').innerHTML = 'please enter your mobile number'
+                        return false
+                    
+                    }
+                    else
+                    {
+                        document.getElementById('errmobile').innerHTML = ''
+                    }
+
+                    //validate mobile number
+
+                    var regxmobile = /^[0-9]+$/
+                    var validmobile = mobile.match(regxmobile)
+
+                    if(!validmobile)
+                    {
+                        document.getElementById('errmobile').innerHTML = 'Please enter valid mobile number'
+                    }
+                    else
+                    {
+                        document.getElementById('errmobile').innerHTML = ''
+                    }
+                      //fetch values from comments
+                      var comments = document.getElementById('comments').value
+                       //check if comments are empty
+                       if(comments)
+                       {
+                        // validate comments textarea(^-charat symbol)
+                        var regxcomments = /^[A-Za-z0-9#.-/ ]+$/
+                        var validcomments = comments.match(regxcomments)
+
+                        if(!validcomments)
+                        {
+                            document.getElementById('errcom').innerHTML = 'Only Alphanumeric with /.-# are allowed'
+                            return false
+                        }
+                        else
+                        {
+                            document.getElementById('errcom').innerHTML = ''
+
+
+                        }
+                       }
+                       else
+                        {
+                            document.getElementById('errcom').innerHTML =''
+                        }
+                       
+                         /* AJAX4 Code goes here(asynchronous javascript and xml,ai-auto increement) */
+                         var xhttpContact = new XMLHttpRequest()
+                    xhttpContact.onreadystatechange = function() /*ajax code is ready to recieve the data*/
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        document.getElementById('successMsg').innerHTML =
+                        this.responseText
+
+                    }
+                }   
+                xhttpContact.open('POST','http://localhost:5000/save-contact-data',true)
+                xhttpContact.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+                xhttpContact.send('name='+name+'&email='+email+'&mobile='+mobile+'&comments='+comments)
+                
+
+                }
+                
+                /*load products start */
+                function loadProducts()
+                {
+                    /*AJAX to recieve the data from the server */
+                    var xhttpProducts = new XMLHttpRequest()
+                    xhttpProducts.onreadystatechange = function() /*ajax code is ready to recieve the data*/
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                       var jsonData = JSON.parse(this.responseText)
+                       var jsonDataLength = jsonData.length;
+                       var producthtml = ''
+
+                       for(var i = 0;i < jsonDataLength;i++)
+                       {
+                          var productTitle = jsonData[i].product_title
+                          var productDescription = jsonData[i].product_description
+                          var productImage = jsonData[i].image
+                          producthtml +='<div class="col-lg-3 col-sm-12">'
+
+                     
+                        producthtml +='<div class="card">'
+                          
+                        producthtml +='<img src="' + productImage + '" alt="Image is loading" style="width: 100%;">'
+                        producthtml +='<div class="card body">'
+                        producthtml +='<h5 class="card-title">' + productTitle + '</h5>' /*title of the project*/
+                        producthtml +='<p class="card-text">' + productDescription +'</p>'
+                        producthtml +='<button class="btn btn-primary"> Add to cart </button>'
+                        producthtml +='</div>'
+                        producthtml +='</div>'
+
+
+                        producthtml +='</div>'
+                       } /*for loop end*/
+
+                       document.getElementById('productData').innerHTML = producthtml
+                    }
+                    
+
+                };
+                xhttpProducts.open('GET','http://localhost:5000/products',true)
+                xhttpProducts.send()
+                }
+                /* Ad Click Function */
+           function adClick()
+           {    
+                /* AJAX Ad Click Start */
+                var xhttpAdClick = new XMLHttpRequest()
+                xhttpAdClick.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        console.log(this.responseText)
+                    }   
+                }
+                xhttpAdClick.open('GET','http://localhost:5000/ad-click', true)
+                xhttpAdClick.send()  
+                /* AJAX Ad Click End */
+            }
+
+
+                 /*load products end */
+                   </script>
+        </body>
+    
+</html>
